@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Webserv</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>🚀 Webserv</h1>
+
+	<div class="test-section">
+		<h2>Basic HTTP Tests</h2>
+		<a href="pages/get/get.html"><button>GET Request</button></a>
+		<a href="pages/post/post.html"><button>POST Request</button></a>
+		<a href="pages/delete/delete.html"><button>DELETE Request</button></a>
+	</div>
+
+	<div class="test-section">
+		<h2>CGI Tests</h2>
+		<a href="pages/cgi-bin/script.js"><button>javascript</button></a>
+		<a href="pages/cgi-bin/script.php"><button>php</button></a>
+		<a href="pages/cgi-bin/script.pl"><button>perl</button></a>
+		<a href="pages/cgi-bin/script.py"><button>python</button></a>
+		<a href="pages/cgi-bin/script.rb"><button>ruby</button></a>
+		<a href="pages/cgi-bin/script.sh"><button>bash</button></a>
+		<a href="pages/cgi-bin/script.tcl"><button>tcl</button></a>
+	</div>
+	<div class="test-section">
+		<h2>Error Tests</h2>
+		<form action="/invalid-endpoint" method="POST">
+			<a href="pages/cgi-bin/sc"><button type="submit">400 - Bad Request</button></a>
+		</form>
+		<a href="index_forbidden.html"><button>403 - Forbidden</button></a>
+		<a href="invalid-path"><button>404 - Not Found</button></a>
+		<form id="putForm">
+			<a href="index.html"><button type="submit">405 - Method Not Allowed</button></a>
+		</form>
+		<a href="pages/cgi-bin/long.py"><button>408 - Request Timeout</button></a>
+	</div>
+	<script>
+		document.getElementById('putForm').addEventListener('submit', function(e) {
+			e.preventDefault();
+			
+			fetch('/putForm', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'text/html',
+			}
+		})
+		.then(response => response.text())
+		.then(html => {
+			document.body.innerHTML = html; // Replace entire body with server response
+		})
+		.catch(error => console.error('Error:', error));
+			});
+	</script>
+</body>
+</html>

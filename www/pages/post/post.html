@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>POST Request</title>
+	<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+	<h1>📤 POST Request</h1>
+	<div class="container">
+		<form class="file-download-section" method="post" enctype="multipart/form-data">
+			<h2 class="file">🗂️ Upload File</h2>
+			<label for="fileInput">Fichiers :</label>
+			<div class="form-group">
+				<input type="file" id="fileInput" name="files" multiple>
+			</div>
+			<button type="submit">Send File</button>
+		</form>
+
+		<form class="file-download-section" method="post">
+			<h2 class="file">✉️ Contact Form</h2>
+			<label for="name">Username :</label>
+			<div class="form-group">
+				<input type="text" id="name" name="name" pattern="^[a-zA-Z0-9]+$" required>
+			</div>
+			<label for="email">Email :</label>
+			<div class="form-group">
+				<input type="email" id="email" name="email" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+			</div>
+			<label for="message">Message :</label>
+			<div class="form-group">
+				<textarea id="message" name="message" rows="4" pattern="^[a-zA-Z0-9]+$" required></textarea>
+			</div>
+			<button type="submit">Envoyer</button>
+		</form>
+	</div>

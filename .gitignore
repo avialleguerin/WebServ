@@ -1,0 +1,17 @@
+# Prerequisites
+*.objs
+*.o
+*.deps
+*.d
+
+# Executable
+.deps/
+.objs/
+.vscode/
+objects/
+webserv
+upload/
+
+
+file_to_delete
+config

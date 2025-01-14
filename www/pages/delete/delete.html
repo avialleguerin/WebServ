@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DELETE Request</title>
+	<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+	<h1>🗑️ DELETE Request</h1>
+	<div class="container">
+		<label for="fileName">Enter the file name to delete:</label>
+		<div class="form-group">
+			<input type="text" id="fileName" placeholder="your_file_to_delete.txt">
+		</div>
+		<button id="deleteButton">Delete File</button>
+<script>
+	document.getElementById('deleteButton').addEventListener('click', function() {
+		const fileName = document.getElementById('fileName').value;
+		// Send a DELETE request to delete the specified file
+		fetch(`../../upload/${fileName}`, {
+			method: 'DELETE'
+		})
+		.then(response => {
+			if (response.status === 200) {
+				alert(`File '${fileName}' deleted successfully.`);
+			} else {
+				alert(`Failed to delete the file '${fileName}'.`);
+			}
+		})
+		.catch(error => {
+			console.error('An error occurred:', error);
+		});
+	});
+</script>
+<h3>List of uploaded files :</h3>
